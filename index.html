@@ -146,6 +146,7 @@
 
     * {
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
 
     html {
@@ -211,7 +212,16 @@
       touch-action: pan-y;
       user-select: none;
       -webkit-user-select: none;
+      -webkit-touch-callout: none;
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
       /* no shadow, no radius: the torn edge baked into the render is the outline */
+    }
+
+    .pond:focus,
+    .pond:focus-visible,
+    .pond:active {
+      outline: none;
     }
 
     .pond canvas {
@@ -220,6 +230,17 @@
       width: 100%;
       height: 100%;
       display: block;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
+    }
+
+    .pond canvas:focus,
+    .pond canvas:focus-visible,
+    .pond canvas:active {
+      outline: none;
     }
 
     /* ---------- controls ---------- */
@@ -3901,6 +3922,7 @@ void main() {
       }
     });
     pond.addEventListener("contextmenu", (e) => e.preventDefault());
+    pond.addEventListener("selectstart", (e) => e.preventDefault());
 
     /* ------------------------------------------------------------------------ */
     /* Main loop                                                                 */
